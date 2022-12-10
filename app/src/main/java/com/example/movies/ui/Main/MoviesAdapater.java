@@ -88,7 +88,7 @@ public class MoviesAdapater extends RecyclerView.Adapter<MoviesAdapater.MovieVie
         void onReachEnd(); //Конец списка
     }
 
-    interface OnClickListener{
+    public interface OnClickListener{
         void onClick(Movie movie);
     }
 

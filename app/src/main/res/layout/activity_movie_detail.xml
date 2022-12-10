@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,48 +14,48 @@
             android:id="@+id/imageViewPosterDet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            tools:src="@tools:sample/avatars"/>
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textViewTitleDet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewPosterDet"
-            android:textSize="16sp"
-            android:padding="8dp"
-            android:textStyle="bold"
-            tools:text="Movies"/>
+            tools:text="Movies" />
 
         <TextView
             android:id="@+id/textViewYearDet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTitleDet"
-            android:textSize="16sp"
-            android:padding="8dp"
-            android:textColor="@android:color/holo_orange_light"
-            tools:text="2019"/>
+            tools:text="2019" />
 
         <TextView
             android:id="@+id/textViewDescript"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewYearDet"
-            android:textSize="16sp"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            tools:text="Описание"/>
+            tools:text="Описание" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewTrailers"
@@ -79,6 +78,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewTrailers"
             tools:listitem="@layout/review_item" />
+
+        <ImageView
+            android:id="@+id/imageViewStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewPosterDet"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewPosterDet"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPosterDet"
+            tools:srcCompat="@android:drawable/btn_star_big_on" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

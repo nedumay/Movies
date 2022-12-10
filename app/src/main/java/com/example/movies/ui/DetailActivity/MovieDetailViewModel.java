@@ -9,6 +9,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.movies.data.ApiFactory;
+import com.example.movies.data.MovieDao;
+import com.example.movies.data.MovieDataBase;
+import com.example.movies.domain.Movie;
 import com.example.movies.domain.Review;
 import com.example.movies.domain.ReviewResponse;
 import com.example.movies.domain.Trailer;
@@ -33,11 +36,18 @@ public class MovieDetailViewModel extends AndroidViewModel {
     }
 
     private final MutableLiveData<List<Review>> reviews = new MutableLiveData<List<Review>>();
-
     public LiveData<List<Review>> getReviews() {return reviews;}
+
+    private MovieDao movieDao;
+
+    public LiveData<Movie> getFavouriteMovie(int movieId){
+        return movieDao.getFavouriteMovie(movieId);
+    }
+
 
     public MovieDetailViewModel(@NonNull Application application) {
         super(application);
+        movieDao = MovieDataBase.getInstance(application).movieDao();
     }
 
     public void loadReviews(int id){
@@ -79,6 +89,20 @@ public class MovieDetailViewModel extends AndroidViewModel {
                         Log.d("MDAVM", throwable.toString());
                     }
                 });
+        compositeDisposable.add(disposable);
+    }
+
+    public void insertMovie(Movie movie){
+        Disposable disposable = movieDao.insertMovie(movie)
+                .subscribeOn(Schedulers.io())
+                .subscribe(); // добавить обработку ошибок
+        compositeDisposable.add(disposable);
+    }
+
+    public void removeMovie(int movieId) {
+        Disposable disposable = movieDao.removeMovie(movieId)
+                .subscribeOn(Schedulers.io())
+                .subscribe(); // добавить обработку ошибок
         compositeDisposable.add(disposable);
     }
 

@@ -1,15 +1,18 @@
 package com.example.movies.ui.DetailActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +39,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView textViewTitle;
     private TextView textViewYear;
     private TextView textViewDescr;
+    private ImageView imageViewStar;
 
     private RecyclerView recyclerViewTrailers;
     private TrailerAdapter trailerAdapter;
@@ -77,6 +81,34 @@ public class MovieDetailActivity extends AppCompatActivity {
             }
         });
         viewModel.loadReviews(movie.getId());
+
+        Drawable starOff = ContextCompat.getDrawable(
+                MovieDetailActivity.this, android.R.drawable.star_big_off);
+        Drawable starOn = ContextCompat.getDrawable(
+                MovieDetailActivity.this, android.R.drawable.star_big_on);
+
+        viewModel.getFavouriteMovie(movie.getId()).observe(this, new Observer<Movie>() {
+            @Override
+            public void onChanged(Movie movieFromDB) {
+                if(movieFromDB == null){
+                    imageViewStar.setImageDrawable(starOff);
+                    imageViewStar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            viewModel.insertMovie(movie);
+                        }
+                    });
+                } else {
+                    imageViewStar.setImageDrawable(starOn);
+                    imageViewStar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            viewModel.removeMovie(movie.getId());
+                        }
+                    });
+                }
+            }
+        });
     }
 
     private void inirAdapterReviews() {
@@ -105,6 +137,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         textViewDescr = findViewById(R.id.textViewDescript);
         recyclerViewTrailers = findViewById(R.id.recyclerViewTrailers);
         recyclerViewReviews = findViewById(R.id.recyclerViewReview);
+        imageViewStar = findViewById(R.id.imageViewStar);
     }
 
     public static Intent newIntent(Context context, Movie movie){
