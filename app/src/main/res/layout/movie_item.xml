@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:minHeight="250dp"
             android:contentDescription="null"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -25,12 +26,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@android:color/holo_green_light"
-            android:padding="16dp"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/circle_green"
             tools:text="8.8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
