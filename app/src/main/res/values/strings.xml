@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movies</string>
     <string name="item_favourite">Favourite movies</string>
+    <string name="movies">MOVIES</string>
 </resources>
