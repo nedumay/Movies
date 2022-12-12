@@ -7,21 +7,21 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="2dp"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="8dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backgroundReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:background="@color/black">
+        tools:background="@color/white">
 
         <TextView
             android:id="@+id/textViewAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

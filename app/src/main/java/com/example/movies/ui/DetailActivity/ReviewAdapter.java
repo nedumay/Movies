@@ -45,13 +45,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.RieviewVie
         holder.textViewAuthor.setText(review.getAuthor());
         holder.textViewReview.setText(review.getReview());
         String type = review.getType();
-        int bacgroundId = android.R.color.holo_red_light;
+        int bacgroundId = R.color.light_red;
         switch (type){
             case TYPE_POSITIVE:
-                bacgroundId = android.R.color.holo_green_light;
+                bacgroundId = R.color.light_green;
                 break;
             case TYPE_NEUTRAL:
-                bacgroundId = android.R.color.holo_orange_light;
+                bacgroundId = R.color.light_orange;
                 break;
         }
         int color = ContextCompat.getColor(holder.itemView.getContext(), bacgroundId);
