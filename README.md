@@ -1,4 +1,4 @@
-## About <img src="https://img.shields.io/badge/v-1.0-blue" alt="App Version">
+## Movies <img src="https://img.shields.io/badge/v-1.0-blue" alt="App Version">
 
 Movies is a movie search project.
 The ability to save a movie to favorites in the database, view the trailer and reviews has been implemented.
