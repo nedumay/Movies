@@ -18,6 +18,8 @@ import com.example.movies.domain.Movie;
 import com.example.movies.ui.DetailActivity.MovieDetailActivity;
 import com.example.movies.R;
 import com.example.movies.ui.FavouriteActivity.FavouriteActivity;
+import com.example.movies.ui.Main.adapter.MovieItemDiffCallback;
+import com.example.movies.ui.Main.adapter.MoviesAdapter;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel mainViewModel;
     private RecyclerView recyclerViewMovies;
-    private MoviesAdapater moviesAdapater;
+    private MoviesAdapter moviesAdapter;
     private ProgressBar progressBar;
 
     @Override
@@ -40,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(List<Movie> movies) {
-
-                moviesAdapater.setMovies(movies);
+                moviesAdapter.submitList(movies);
             }
         });
         
@@ -59,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        moviesAdapater = new MoviesAdapater();
-        recyclerViewMovies.setAdapter(moviesAdapater);
+        moviesAdapter = new MoviesAdapter(new MovieItemDiffCallback());
+        recyclerViewMovies.setAdapter(moviesAdapter);
         recyclerViewMovies.setLayoutManager(new GridLayoutManager(this,2));
-        moviesAdapater.setOnReachEndListener(new MoviesAdapater.OnReachEndListener() {
+        moviesAdapter.setOnReachEndListener(new MoviesAdapter.OnReachEndListener() {
             @Override
             public void onReachEnd() {
                 mainViewModel.loadMovies();
             }
         });
-        moviesAdapater.setOnClickListener(new MoviesAdapater.OnClickListener() {
+        moviesAdapter.setOnClickListener(new MoviesAdapter.OnClickListener() {
             @Override
             public void onClick(Movie movie) {
                 Intent intent = MovieDetailActivity.newIntent(MainActivity.this, movie);

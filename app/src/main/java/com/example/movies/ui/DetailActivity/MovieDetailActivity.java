@@ -11,25 +11,21 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.movies.data.ApiFactory;
 import com.example.movies.domain.Movie;
 import com.example.movies.R;
 import com.example.movies.domain.Review;
-import com.example.movies.domain.ReviewResponse;
 import com.example.movies.domain.Trailer;
+import com.example.movies.ui.DetailActivity.adapter.review.ReviewAdapter;
+import com.example.movies.ui.DetailActivity.adapter.review.ReviewItemDiffCallback;
+import com.example.movies.ui.DetailActivity.adapter.trailer.TrailerAdapter;
+import com.example.movies.ui.DetailActivity.adapter.trailer.TrailerItemDiffCallback;
 
 import java.util.List;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Scheduler;
-import io.reactivex.rxjava3.functions.Consumer;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -64,7 +60,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         viewModel.getTrailers().observe(this, new Observer<List<Trailer>>() {
             @Override
             public void onChanged(List<Trailer> trailers) {
-               trailerAdapter.setTrailers(trailers);
+               trailerAdapter.submitList(trailers);
             }
         });
 
@@ -77,7 +73,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         viewModel.getReviews().observe(this, new Observer<List<Review>>() {
             @Override
             public void onChanged(List<Review> reviews) {
-                reviewAdapter.setReviews(reviews);
+                reviewAdapter.submitList(reviews);
             }
         });
         viewModel.loadReviews(movie.getId());
@@ -112,12 +108,12 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void inirAdapterReviews() {
-        reviewAdapter = new ReviewAdapter();
+        reviewAdapter = new ReviewAdapter(new ReviewItemDiffCallback());
         recyclerViewReviews.setAdapter(reviewAdapter);
     }
 
     private void initAdapterTrailers() {
-        trailerAdapter = new TrailerAdapter();
+        trailerAdapter = new TrailerAdapter(new TrailerItemDiffCallback());
         recyclerViewTrailers.setAdapter(trailerAdapter);
         trailerAdapter.setOnClickListener(new TrailerAdapter.OnClickListener() {
             @Override

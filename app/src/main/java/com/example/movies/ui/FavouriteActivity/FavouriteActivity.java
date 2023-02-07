@@ -13,7 +13,8 @@ import android.os.Bundle;
 import com.example.movies.R;
 import com.example.movies.domain.Movie;
 import com.example.movies.ui.DetailActivity.MovieDetailActivity;
-import com.example.movies.ui.Main.MoviesAdapater;
+import com.example.movies.ui.Main.adapter.MovieItemDiffCallback;
+import com.example.movies.ui.Main.adapter.MoviesAdapter;
 
 import java.util.List;
 
@@ -29,10 +30,10 @@ public class FavouriteActivity extends AppCompatActivity {
         );
 
         RecyclerView recyclerViewFavourite = findViewById(R.id.recyclerViewMoviesFav);
-        MoviesAdapater moviesAdapater = new MoviesAdapater();
+        MoviesAdapter moviesAdapter = new MoviesAdapter(new MovieItemDiffCallback());
         recyclerViewFavourite.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerViewFavourite.setAdapter(moviesAdapater);
-        moviesAdapater.setOnClickListener(new MoviesAdapater.OnClickListener() {
+        recyclerViewFavourite.setAdapter(moviesAdapter);
+        moviesAdapter.setOnClickListener(new MoviesAdapter.OnClickListener() {
             @Override
             public void onClick(Movie movie) {
                 Intent intent = MovieDetailActivity.newIntent(
@@ -46,7 +47,7 @@ public class FavouriteActivity extends AppCompatActivity {
         favouriteViewModel.getMovie().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(List<Movie> movies) {
-                moviesAdapater.setMovies(movies);
+                moviesAdapter.submitList(movies);
             }
         });
     }
