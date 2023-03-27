@@ -17,7 +17,6 @@ public class MoviesAdapter extends ListAdapter<Movie, MovieViewHolder> {
 
     public MoviesAdapter(@NonNull DiffUtil.ItemCallback<Movie> diffCallback) {
         super(diffCallback);
-
     }
 
     private OnReachEndListener onReachEndListener;

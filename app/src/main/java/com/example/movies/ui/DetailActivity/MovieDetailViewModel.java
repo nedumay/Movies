@@ -8,9 +8,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.movies.data.ApiFactory;
-import com.example.movies.data.MovieDao;
-import com.example.movies.data.MovieDataBase;
+import com.example.movies.data.remote.ApiFactory;
+import com.example.movies.data.database.MovieDao;
+import com.example.movies.data.database.MovieDataBase;
 import com.example.movies.domain.Movie;
 import com.example.movies.domain.Review;
 import com.example.movies.domain.ReviewResponse;

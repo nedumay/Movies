@@ -1,4 +1,4 @@
-package com.example.movies.data;
+package com.example.movies.data.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

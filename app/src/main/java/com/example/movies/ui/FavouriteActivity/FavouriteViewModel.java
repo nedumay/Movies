@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.movies.data.MovieDao;
-import com.example.movies.data.MovieDataBase;
+import com.example.movies.data.database.MovieDao;
+import com.example.movies.data.database.MovieDataBase;
 import com.example.movies.domain.Movie;
 
 import java.util.List;
