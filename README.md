@@ -1,14 +1,23 @@
-## Movies <img src="https://img.shields.io/badge/v-1.0-blue" alt="App Version">
+## Movies <img src="https://img.shields.io/badge/v-1.1-blue" alt="App Version">
 
-Movies is a movie search project.
-The ability to save a movie to favorites in the database, view the trailer and reviews has been implemented.
-The app was developed using the MVVM architecture using Java, the Retrofit2, RxJava3, Room DB and Kinopoisk api libraries.
-The project was created with the aim of teaching + making a template for working with Room, Retrofit2, RxJava for yourself and other people.
-enjoy!:)
+An app for viewing information about movies with a rating above 6 stars on Kinopoisk.
+Application сapabilities:
+1. Movie list display.
+2. Show detailed information about the movie, its rating and reviews.
+3. Go to YouTube to view all trailers.
+4. Saving the movie to the database. 
+
+Language: Java
+
+Pattern: MVVM, Singltone
+
+Tools and Libraries: Retrofit2, RxJava3, RoomDB, Glide
+
+API: Kinopoisk
 
 ## Main menu
 ![1small](https://user-images.githubusercontent.com/79632860/212368434-e9fd3de5-2455-41f5-84a8-61934484ce97.jpg)
-## Second Activity
+## About films
 ![2small](https://user-images.githubusercontent.com/79632860/212368593-fffad8f4-9dd0-4fbc-8180-29c3c6e49fa3.jpg)
 ![3small](https://user-images.githubusercontent.com/79632860/212368600-3f8ff8e3-5c87-43b9-849c-e2c3fd1a84cb.jpg)
 ## Favorite films
