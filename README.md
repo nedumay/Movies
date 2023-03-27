@@ -8,8 +8,11 @@ Application сapabilities:
 4. Saving the movie to the database. 
 
 Language: Java
+
 Pattern: MVVM, Singltone
+
 Tools and Libraries: Retrofit2, RxJava3, RoomDB, Glide
+
 API: Kinopoisk
 
 ## Main menu
