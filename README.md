@@ -1,5 +1,7 @@
 ## Movies <img src="https://img.shields.io/badge/v-1.1-blue" alt="App Version">
 
+Last update: 24.07.2024 ########...
+
 An app for viewing information about movies with a rating above 6 stars on Kinopoisk.
 Application сapabilities:
 1. Movie list display.
