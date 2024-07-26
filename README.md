@@ -13,7 +13,7 @@ Language: Java
 
 Pattern: MVVM, Singltone
 
-Tools and Libraries: Retrofit2, RxJava3, RoomDB, Glide
+Tools and Libraries: Retrofit2, RxJava, RoomDB, Glide
 
 API: Kinopoisk
 
